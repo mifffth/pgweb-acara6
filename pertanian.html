@@ -31,6 +31,9 @@
             <ul class="dropdown-menu dropdown-menu-end">
               <li><a class="dropdown-item" href="pertanian.html">Jenis pertanian</a></li>
               <li><a class="dropdown-item" href="kepadatan.html">Kepadatan penduduk</a></li>
+              <li><a class="dropdown-item" href="kemiskinan.html">Tingkat kemiskinan</a></li>
+              <li><a class="dropdown-item" href="perikanan.html">Jumlah perikanan</a></li>
+              <li><a class="dropdown-item" href="pelabuhan.html">Ekspor dan impor</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
@@ -50,7 +53,8 @@
 
     <div class="card">
       <div class="card-header">
-        <h5>Jenis pertanian</h5>
+        <h5>Luas Panen Tanaman Sayuran dan Buah–Buahan Semusim Menurut Jenis Tanaman di Kota Semarang (ha) Tahun 2019
+        </h5>
       </div>
       <div class="card-body">
         <div id="chart"></div>
@@ -89,37 +93,37 @@
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
   <script>
-var options = {
-          series: [0, 1.00, 0, 0, 0, 0, 0, 4.00, 0.21, 1.00, 6.00, 0, 0, 0.21, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    var options = {
+      series: [0, 1.00, 0, 0, 0, 0, 0, 4.00, 0.21, 1.00, 6.00, 0, 0, 0.21, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      chart: {
+        type: 'donut',
+        width: '500'
+      },
+      labels: [
+        'Bawang Daun/Scallion', 'Bawang Merah/Shallots', 'Bawang Putih/Garlic', 'Cabai Besar/Chili/Big Chili',
+        'Cabai Rawit/Chili/Cayenne Pepper', 'Kentang/Potato', 'Kubis/Cabbage', 'Bayam/Spinach', 'Jamur/Mushrooms',
+        'Kacang Panjang/Long Beans', 'Kangkung/Water Spinach', 'Blewah/Blewah', 'Buncis/String Bean',
+        'Jamur/Mushrooms', 'Kacang Merah/Red Beans', 'Kembang Kol/Cauliflower', 'Ketimun/Cucumber',
+        'Labu Siam/Chayote', 'Lobak/Radish', 'Paprika/Bell Pepper', 'Petsai/Sawi/Chinese Cabbage',
+        'Semangka/Watermelon', 'Stroberi/Strawberry', 'Melon/Melon', 'Terung/Eggplant', 'Tomat/Tomato',
+        'Wortel/Carrot'
+      ],
+      responsive: [{
+        breakpoint: 480,
+        options: {
           chart: {
-          type: 'donut',
-          width: '500'
-        },
-        labels: [
-      'Bawang Daun/Scallion', 'Bawang Merah/Shallots', 'Bawang Putih/Garlic', 'Cabai Besar/Chili/Big Chili',
-      'Cabai Rawit/Chili/Cayenne Pepper', 'Kentang/Potato', 'Kubis/Cabbage', 'Bayam/Spinach', 'Jamur/Mushrooms',
-      'Kacang Panjang/Long Beans', 'Kangkung/Water Spinach', 'Blewah/Blewah', 'Buncis/String Bean',
-      'Jamur/Mushrooms', 'Kacang Merah/Red Beans', 'Kembang Kol/Cauliflower', 'Ketimun/Cucumber',
-      'Labu Siam/Chayote', 'Lobak/Radish', 'Paprika/Bell Pepper', 'Petsai/Sawi/Chinese Cabbage',
-      'Semangka/Watermelon', 'Stroberi/Strawberry', 'Melon/Melon', 'Terung/Eggplant', 'Tomat/Tomato',
-      'Wortel/Carrot'
-    ],
-        responsive: [{
-          breakpoint: 480,
-          options: {
-            chart: {
-              width: 200
-            },
-            legend: {
-              position: 'bottom'
-            }
+            width: 200
+          },
+          legend: {
+            position: 'bottom'
           }
-        }]
-        };
+        }
+      }]
+    };
 
-        var chart = new ApexCharts(document.querySelector("#chart"), options);
-        chart.render();
-      
+    var chart = new ApexCharts(document.querySelector("#chart"), options);
+    chart.render();
+
 
   </script>
 </body>
