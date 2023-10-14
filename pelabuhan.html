@@ -55,7 +55,7 @@
 
         <div class="card">
             <div class="card-header">
-                <h5>, Kepadatan Penduduk Menurut Kecamatan di Kota Semarang, 2020 dan 2021</h5>
+                <h5>Tingkat Volume dan Ekspor Kota Semarang Tahun 2018 - 2020</h5>
             </div>
             <div class="card-body">
                 <div id="chart"></div>
@@ -96,86 +96,53 @@
 
     <script>
         // Data
-        var years = ['2018', '2019', '2020'];
-        var volumeData = [2620864021, 2533857504, 2352691814];
-        var valueData = [6957390883, 6385540370, 5690815595];
-
-        // Chart Options
-        var options = {
-            chart: {
-                type: 'area',
-                width: '500',
-            },
-            xaxis: {
-                categories: years,
-            },
-            yaxis: [
-                {
-                    axisTicks: {
-                        show: true,
-                    },
-                    axisBorder: {
-                        show: true,
-                    },
-                    labels: {
-                        formatter: function (value) {
-                            return value.toLocaleString(); // Format numbers with commas
-                        },
-                    },
-                    title: {
-                        text: 'Volume (kg)',
-                    },
-                },
-                {
-                    opposite: true,
-                    axisTicks: {
-                        show: true,
-                    },
-                    axisBorder: {
-                        show: true,
-                    },
-                    labels: {
-                        formatter: function (value) {
-                            return '$' + value.toLocaleString(); // Format numbers with currency symbol and commas
-                        },
-                    },
-                    title: {
-                        text: 'Value (US$)',
-                    },
-                },
-            ],
-            fill: {
-                type: 'solid',
-                opacity: 0.5,
-            },
-            legend: {
-                position: 'top',
-            },
-        };
-
-        // Chart Data
-        var series = [
+        var years = ["2018", "2019", "2020"];
+        var seriesData = [
             {
-                name: 'Volume',
-                type: 'area',
-                data: volumeData,
+                name: "Volume/Netto (Kg)",
+                data: [1171332, 1189748, 195357],
             },
             {
-                name: 'Value',
-                type: 'area',
-                data: valueData,
-                yAxisIndex: 1,
+                name: "Nilai FOB (US$)",
+                data: [9729268, 8425667, 2802762],
             },
         ];
 
-        // Create Chart
-        var chart = new ApexCharts(document.querySelector("#chart"), {
-            series: series,
-            options: options,
-        });
+        // Chart Options
+        var options = {
+            series: seriesData,
+            chart: {
+                height: 350,
+                type: "area",
+            },
+            dataLabels: {
+                enabled: false,
+            },
+            stroke: {
+                curve: "smooth",
+            },
+            xaxis: {
+                categories: years,
+                title: {
+                    text: "Year",
+                },
+            },
+            yaxis: {
+                title: {
+                    text: "Value",
+                },
+            },
+            tooltip: {
+                x: {
+                    format: "yyyy",
+                },
+            },
+        };
 
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
         chart.render();
     </script>
+
 </body>
 
 </html>

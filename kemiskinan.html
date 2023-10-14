@@ -98,44 +98,48 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script>
-        // Data
-        var data = [0.16, 0.14, 0.11];
-        var labels = ['2020', '2021', '2022'];
-
-        // Chart Options
         var options = {
+            series: [{
+                name: "Tingkat kemiskinan",
+                data: [0.16, 0.14, 0.11]
+            }],
             chart: {
-                type: 'line', // Change the chart type to 'line'
-                width: '500'
+                height: 350,
+                type: 'line',
+                zoom: {
+                    enabled: false
+                }
+            },
+            dataLabels: {
+                enabled: true,
+                formatter: function (val) {
+                    return val
+                },
+                offsetY: -20,
+                style: {
+                    fontSize: '12px',
+                    colors: ["#304758"]
+                }
+            },
+            stroke: {
+                curve: 'straight'
+            },
+            title: {
+                text: 'Tingkat Kemiskinan Kota Semarang Berdasarkan Tahun',
+                align: 'left'
+            },
+            grid: {
+                row: {
+                    colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+                    opacity: 0.5
+                },
             },
             xaxis: {
-                categories: labels,
-            },
-            responsive: [{
-                breakpoint: 480,
-                options: {
-                    chart: {
-                        width: 200
-                    },
-                    legend: {
-                        position: 'bottom'
-                    }
-                }
-            }]
+                categories: ['2020', '2021', '2022'],
+            }
         };
 
-        // Chart Data
-        var series = [{
-            name: 'Data',
-            data: data,
-        }];
-
-        // Create Chart
-        var chart = new ApexCharts(document.querySelector("#chart"), {
-            series: series,
-            options: options,
-        });
-
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
         chart.render();
     </script>
 

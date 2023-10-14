@@ -55,7 +55,7 @@
 
         <div class="card">
             <div class="card-header">
-                <h5>Volume dan Nilai Ekspor Impor Kota Semarang Tahun 2018 - 2020</h5>
+                <h5>Daya Terpasang, Produksi, dan Distribusi Listrik PT. PLN (Persero) pada Cabang/Ranting PLN menurut Golongan di Kota Semarang,  2020</h5>
             </div>
             <div class="card-body">
                 <div id="chart"></div>
@@ -98,81 +98,73 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script>
-        // Data
-        var kecamatan = ['Mijen', 'Gunungpati', 'Banyumanik', 'Gajah Mungkur', 'Semarang Selatan', 'Candisari', 'Tembalang', 'Pedurungan', 'Genuk', 'Gayamsari', 'Semarang Timur', 'Semarang Utara', 'Semarang Tengah', 'Semarang Barat', 'Tugu', 'Ngaliyan', 'Semarang'];
-        var marineFisheries2019 = [0, 0, 0, 0, 0, 0, 0, 0, 43, 0, 734, 0, 12, 219, 3, 1011];
-        var marineFisheries2020 = [0, 0, 0, 0, 0, 0, 0, 0, 45, 0, 753, 0, 12, 258, 0, 1068];
-        var inlandWater2019 = [0, 29, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-        var inlandWater2020 = [0, 29, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-
-        // Chart Options
         var options = {
-            chart: {
-                type: 'scatter',
-                width: '700',
-                animations: {
-                    enabled: false, // Disable animations for better performance
+            series: [
+                {
+                    name: 'Daya Terpasang',
+                    data: [140212.10, 657960.50, 499111.05, 386564.00, 63533.65, 1747381.30],
                 },
+                {
+                    name: 'Produksi Listrik',
+                    data: [194744.33, 1154311.44, 720735.66, 884399.21, 137847.32, 3092037.96],
+                },
+                {
+                    name: 'Listrik Terjual',
+                    data: [185153.83, 1090540.71, 686395.48, 837385.43, 131413.48, 2930888.92],
+                },
+                {
+                    name: 'Dipakai Sendiri',
+                    data: [0, 0, 0, 0, 0, 0],
+                },
+                {
+                    name: 'Susut/Hilang',
+                    data: [9590.50, 63770.73, 34340.18, 47013.79, 6433.84, 161149.04],
+                },
+            ],
+            chart: {
+                type: 'bar',
+                height: 350,
+                stacked: true,
+                stackType: '100%',
+            },
+            plotOptions: {
+                bar: {
+                    horizontal: true,
+                },
+            },
+            stroke: {
+                width: 1,
+                colors: ['#fff'],
+            },
+            title: {
+                text: '100% Stacked Bar',
             },
             xaxis: {
-                categories: kecamatan,
-                labels: {
-                    rotate: -45,
-                },
-                title: {
-                    text: 'Kecamatan/Subdistrict',
-                },
-            },
-            yaxis: {
-                labels: {
-                    formatter: function (value) {
-                        return value === 0 ? '-' : value; // Display '-' for 0 values
-                    },
-                },
-                title: {
-                    text: 'Perikanan Laut/ Marine Fisheries & Perairan Umum/Inland Water',
-                },
-            },
-            markers: {
-                size: 8,
+                categories: [
+                    'Sosial/Social', 'Rumah tangga/Household', 'Usaha/Business',
+                    'Industri/Industry', 'Perkantoran/Offices', 'Kota Semarang',
+                ],
             },
             tooltip: {
-                custom: function ({ seriesIndex, dataPointIndex, w }) {
-                    const value = w.config.series[seriesIndex].data[dataPointIndex];
-                    return value === 0 ? 'No data' : value;
+                y: {
+                    formatter: function (val) {
+                        return val.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' });
+                    },
                 },
+            },
+            fill: {
+                opacity: 1,
+            },
+            legend: {
+                position: 'top',
+                horizontalAlign: 'left',
+                offsetX: 40,
             },
         };
 
-        // Chart Data
-        var series = [
-            {
-                name: 'Marine Fisheries 2019',
-                data: marineFisheries2019,
-            },
-            {
-                name: 'Marine Fisheries 2020',
-                data: marineFisheries2020,
-            },
-            {
-                name: 'Inland Water 2019',
-                data: inlandWater2019,
-            },
-            {
-                name: 'Inland Water 2020',
-                data: inlandWater2020,
-            },
-        ];
-
-        // Create Chart
-        var chart = new ApexCharts(document.querySelector("#chart"), {
-            series: series,
-            options: options,
-        });
-
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
         chart.render();
     </script>
-
 
 </body>
 
